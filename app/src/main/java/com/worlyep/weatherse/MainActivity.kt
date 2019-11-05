@@ -3,12 +3,15 @@ package com.worlyep.weatherse
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.worlyep.weatherse.custom.WeatherInfoLayout
+import com.worlyep.weatherse.data.ConsolidatedWeather
 import com.worlyep.weatherse.data.LocationResponse
 import com.worlyep.weatherse.data.WeatherResponse
 import com.worlyep.weatherse.interfaces.BaseCallBack
 import com.worlyep.weatherse.objects.ApiRequest
 import com.worlyep.weatherse.objects.Logs
 import com.worlyep.weatherse.objects.Utils
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,13 +24,7 @@ class MainActivity : AppCompatActivity() {
         if (Utils.isNetworkConnected(this@MainActivity)) {
             ApiRequest.searchWeather(object : BaseCallBack<ArrayList<WeatherResponse>> {
                 override fun onResultForData(body: ArrayList<WeatherResponse>?) {
-                    Logs.catchLogs(body.toString())
                     if (body != null && body.size > 0) {
-                        Logs.catchLogs("${body.size}")
-                        Logs.catchLogs("${body[0].title}")
-                        Logs.catchLogs("${body[0].lattLong}")
-                        Logs.catchLogs("${body[0].locationType}")
-                        Logs.catchLogs("${body[0].woeid}")
                         locationWeather(body[0].woeid)
                     }
                 }
@@ -48,9 +45,9 @@ class MainActivity : AppCompatActivity() {
         if (Utils.isNetworkConnected(this@MainActivity)) {
             ApiRequest.locationWeather(woeId.toString(), object : BaseCallBack<LocationResponse> {
                 override fun onResultForData(body: LocationResponse?) {
-                    Logs.catchLogs(body.toString())
-                    if (body != null) {
-                        Logs.catchLogs("${body.consolidatedWeather!![0].weatherStateAbbr}")
+                    if (body != null && !(body.consolidatedWeather!!.isNullOrEmpty())) {
+                        for (i in 0..1)
+                            initView(body.consolidatedWeather!![i])
                     }
                 }
 
@@ -64,5 +61,13 @@ class MainActivity : AppCompatActivity() {
                 getText(R.string.check_network),
                 Toast.LENGTH_LONG
             ).show()
+    }
+
+    private fun initView(weather: ConsolidatedWeather) {
+        val dailyTotalLayout = WeatherInfoLayout(this@MainActivity)
+        dailyTotalLayout.setWeatherIcon(weather.weatherStateAbbr)
+        dailyTotalLayout.setWeatherName(weather.weatherStateName)
+        dailyTotalLayout.setWeatherTemper((weather.theTemp)?.toInt(), (weather.humidity)?.toInt())
+        testLayout.addView(dailyTotalLayout)
     }
 }

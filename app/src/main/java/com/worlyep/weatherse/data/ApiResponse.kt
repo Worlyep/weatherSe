@@ -2,6 +2,7 @@ package com.worlyep.weatherse.data
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.worlyep.weatherse.Application
 
 data class WeatherResponse(var weather: WeatherResponse?) {
     @SerializedName("title")
@@ -34,6 +35,7 @@ data class ConsolidatedWeather(var consolidate: ConsolidatedWeather?) {
     @SerializedName("weather_state_abbr")
     @Expose
     var weatherStateAbbr: String? = null
+        get() = Application.imgUrl + "$field.png"
     @SerializedName("the_temp")
     @Expose
     var theTemp: Double? = null
