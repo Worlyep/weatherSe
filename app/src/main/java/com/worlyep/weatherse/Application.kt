@@ -16,6 +16,7 @@ class Application : Application() {
 
     companion object {
         private const val baseUrl = "https://www.metaweather.com/"
+        private const val imgUrl = baseUrl + "static/img/weather/"
 
         fun setRetrofitServer(): InterfaceRestful {
             val okHttpBuilder = OkHttpClient.Builder()

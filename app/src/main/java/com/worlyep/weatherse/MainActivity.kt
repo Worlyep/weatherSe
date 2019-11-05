@@ -3,6 +3,7 @@ package com.worlyep.weatherse
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.worlyep.weatherse.data.LocationResponse
 import com.worlyep.weatherse.data.WeatherResponse
 import com.worlyep.weatherse.interfaces.BaseCallBack
 import com.worlyep.weatherse.objects.ApiRequest
@@ -26,8 +27,8 @@ class MainActivity : AppCompatActivity() {
                         Logs.catchLogs("${body[0].title}")
                         Logs.catchLogs("${body[0].lattLong}")
                         Logs.catchLogs("${body[0].locationType}")
-                        Logs.catchLogs("${body[0].weather}")
                         Logs.catchLogs("${body[0].woeid}")
+                        locationWeather(body[0].woeid)
                     }
                 }
 
@@ -36,6 +37,32 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         } else
-            Toast.makeText(this@MainActivity, "aaa", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this@MainActivity,
+                getText(R.string.check_network),
+                Toast.LENGTH_LONG
+            ).show()
+    }
+
+    private fun locationWeather(woeId: Int?) {
+        if (Utils.isNetworkConnected(this@MainActivity)) {
+            ApiRequest.locationWeather(woeId.toString(), object : BaseCallBack<LocationResponse> {
+                override fun onResultForData(body: LocationResponse?) {
+                    Logs.catchLogs(body.toString())
+                    if (body != null) {
+                        Logs.catchLogs("${body.consolidatedWeather!![0].weatherStateAbbr}")
+                    }
+                }
+
+                override fun onResultFail(throwable: Throwable?) {
+                    Logs.catchLogs(throwable.toString())
+                }
+            })
+        } else
+            Toast.makeText(
+                this@MainActivity,
+                getText(R.string.check_network),
+                Toast.LENGTH_LONG
+            ).show()
     }
 }
