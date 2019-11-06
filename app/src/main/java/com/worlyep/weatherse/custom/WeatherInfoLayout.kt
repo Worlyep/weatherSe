@@ -12,11 +12,11 @@ import com.worlyep.weatherse.R
 import kotlinx.android.synthetic.main.layout_weather_info.view.*
 
 class WeatherInfoLayout : LinearLayout {
-    constructor(context: Context) : super(context) {
+    constructor(context: Context?) : super(context) {
         initView()
     }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
         initView()
     }
 
