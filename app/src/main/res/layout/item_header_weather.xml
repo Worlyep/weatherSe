@@ -9,9 +9,11 @@
     <TextView
         android:id="@+id/locationTitle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/border_gray_bg_trans"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_gray_bg_gray"
         android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/local_title"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/todayTitle"
@@ -20,26 +22,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.worlyep.weatherse.custom.WeatherInfoLayout
+    <TextView
         android:id="@+id/todayTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_gray_bg_trans"
-        android:gravity="center_vertical"
+        android:background="@drawable/border_gray_bg_gray"
+        android:gravity="center"
         android:orientation="horizontal"
+        android:padding="8dp"
+        android:text="@string/today_title"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tomorrowTitle"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toEndOf="@+id/locationTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.worlyep.weatherse.custom.WeatherInfoLayout
+    <TextView
         android:id="@+id/tomorrowTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_gray_bg_trans"
-        android:gravity="center_vertical"
+        android:background="@drawable/border_gray_bg_gray"
+        android:gravity="center"
         android:orientation="horizontal"
+        android:padding="8dp"
+        android:text="@string/tomorrow_title"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="3"

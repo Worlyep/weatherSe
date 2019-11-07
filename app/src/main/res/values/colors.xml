@@ -8,4 +8,7 @@
     <color name="black">#000</color>
     <color name="humid_black">#545454</color>
     <color name="name_black">#636363</color>
+    <color name="border_gray">#30545454</color>
+    <color name="back_black">#18545454</color>
+    <color name="trans">#00000000</color>
 </resources>

@@ -3,4 +3,8 @@
     <string name="main_title">Local Weather</string>
     <string name="check_network">Please check your network state…</string>
     <string name="weather_temper_humid">&lt;font color="#AA382D">&lt;b>%1$d&lt;/b>℃&lt;/font>\t&lt;font color="#545454">&lt;b>%2$d&lt;/b>%%&lt;/font></string>
+
+    <string name="local_title">Local</string>
+    <string name="today_title">Today</string>
+    <string name="tomorrow_title">Tomorrow</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.worlyep.weatherse
 
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,8 +33,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initData() {
-        searchWeather()
+        weatherList.visibility = View.GONE
+        progress.visibility = View.VISIBLE
         weatherShowcaseList?.let { adapter.setList(it) }
+        searchWeather()
     }
 
     private fun searchWeather() {
@@ -69,7 +73,6 @@ class MainActivity : AppCompatActivity() {
                         }
                         weatherShowcaseList?.add(weatherShowcase)
                         Logs.catchLogs(weatherShowcaseList.toString())
-                        adapter.notifyDataSetChanged()
                     }
                 }
 
@@ -83,5 +86,11 @@ class MainActivity : AppCompatActivity() {
                 getText(R.string.check_network),
                 Toast.LENGTH_LONG
             ).show()
+
+        Handler().postDelayed({
+            adapter.notifyDataSetChanged()
+            weatherList.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+        }, 5000)
     }
 }
