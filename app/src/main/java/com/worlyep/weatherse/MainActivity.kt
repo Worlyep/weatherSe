@@ -29,12 +29,20 @@ class MainActivity : AppCompatActivity() {
         weatherList.layoutManager = linearLayoutMgr
         weatherList.adapter = adapter
 
-        initData()
+        setData()
+
+        refreshLayout.setOnRefreshListener {
+            if (weatherShowcaseList?.size!! > 0)
+                weatherShowcaseList = ArrayList()
+            setData()
+        }
     }
 
-    private fun initData() {
+    private fun setData() {
         weatherList.visibility = View.GONE
-        progress.visibility = View.VISIBLE
+        if (!refreshLayout.isRefreshing) {
+            progress.visibility = View.VISIBLE
+        }
         weatherShowcaseList?.let { adapter.setList(it) }
         searchWeather()
     }
@@ -90,7 +98,11 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             adapter.notifyDataSetChanged()
             weatherList.visibility = View.VISIBLE
-            progress.visibility = View.GONE
+            if (refreshLayout.isRefreshing) {
+                refreshLayout.isRefreshing = false
+            } else {
+                progress.visibility = View.GONE
+            }
         }, 5000)
     }
 }

@@ -41,6 +41,8 @@ class WeatherAdapter(private val context: Context?) :
     }
 
     fun setList(list: ArrayList<WeatherShowcase>) {
+        if (weatherList.size > 0)
+            weatherList = ArrayList()
         weatherList = list
         notifyDataSetChanged()
     }
