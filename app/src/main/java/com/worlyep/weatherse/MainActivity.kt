@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun searchWeather() {
-        if (Utils.isNetworkConnected(this@MainActivity)) {
             ApiRequest.searchWeather(object : BaseCallBack<ArrayList<WeatherResponse>> {
                 override fun onResultForData(body: ArrayList<WeatherResponse>?) {
                     if (body != null && body.size > 0) {
@@ -62,12 +61,6 @@ class MainActivity : AppCompatActivity() {
                     Logs.catchLogs(throwable.toString())
                 }
             })
-        } else
-            Toast.makeText(
-                this@MainActivity,
-                getText(R.string.check_network),
-                Toast.LENGTH_LONG
-            ).show()
     }
 
     private fun locationWeather(location: String?, woeId: Int?) {
