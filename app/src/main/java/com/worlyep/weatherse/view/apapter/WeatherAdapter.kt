@@ -5,31 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.worlyep.weatherse.R
 import com.worlyep.weatherse.api.data.ConsolidateResponse
 import com.worlyep.weatherse.api.data.DataShowcase
 import com.worlyep.weatherse.base.Application
 import com.worlyep.weatherse.view.custom.WeatherInfoLayout
-import kotlinx.android.synthetic.main.item_weather.view.*
+import com.worlyep.weatherse.view.holder.WeatherViewHolder
 
 class WeatherAdapter(private val context: Context?) :
-    RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
+    RecyclerView.Adapter<WeatherViewHolder>() {
     private var isHeader: Boolean = false
     private var weatherList: ArrayList<DataShowcase> = ArrayList()
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): WeatherViewHolder {
         lateinit var view: View
         return if (viewType == 0) {
             isHeader = true
             view =
                 LayoutInflater.from(context).inflate(R.layout.item_header_weather, viewGroup, false)
-            ViewHolder(view, true)
+            WeatherViewHolder(view, true)
         } else {
             isHeader = false
             view = LayoutInflater.from(context).inflate(R.layout.item_weather, viewGroup, false)
-            ViewHolder(view, false)
+            WeatherViewHolder(view, false)
         }
     }
 
@@ -48,7 +47,7 @@ class WeatherAdapter(private val context: Context?) :
         notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         if (weatherList.size > 0 && position > 0) {
             val weather: DataShowcase? = weatherList[position - 1]
             weather?.run {
@@ -67,23 +66,6 @@ class WeatherAdapter(private val context: Context?) :
                 }*/
             }
         }
-    }
-
-    class ViewHolder(itemView: View, headerFlag: Boolean) : RecyclerView.ViewHolder(itemView) {
-        lateinit var locationName: TextView
-        lateinit var todayLayout: WeatherInfoLayout
-        lateinit var tomorrowLayout: WeatherInfoLayout
-
-        init {
-            if (!headerFlag) {
-                locationName = itemView.locationTitle
-                todayLayout = itemView.todayTitle
-                tomorrowLayout = itemView.tomorrowTitle
-            }
-        }
-
-        // 동적 레이아웃 처리를 위한 레이아웃
-        //   val weatherLayout: LinearLayout = itemView.weatherLayout
     }
 
     private fun initWeatherLayout(weather: ConsolidateResponse?, weatherLayout: WeatherInfoLayout) {
@@ -106,5 +88,4 @@ class WeatherAdapter(private val context: Context?) :
     }
 
     private fun getIconUrl(addr: String?): String = Application.imgUrl + "$addr.png"
-
 }
