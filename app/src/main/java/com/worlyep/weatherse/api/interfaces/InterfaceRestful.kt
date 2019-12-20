@@ -1,7 +1,7 @@
-package com.worlyep.weatherse.interfaces
+package com.worlyep.weatherse.api.interfaces
 
-import com.worlyep.weatherse.data.LocationResponse
-import com.worlyep.weatherse.data.WeatherResponse
+import com.worlyep.weatherse.api.data.LocationResponse
+import com.worlyep.weatherse.api.data.WeatherResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

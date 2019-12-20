@@ -1,9 +1,9 @@
-package com.worlyep.weatherse.objects
+package com.worlyep.weatherse.base.objects
 
-import com.worlyep.weatherse.Application
-import com.worlyep.weatherse.data.LocationResponse
-import com.worlyep.weatherse.data.WeatherResponse
-import com.worlyep.weatherse.interfaces.BaseCallBack
+import com.worlyep.weatherse.base.Application
+import com.worlyep.weatherse.api.data.LocationResponse
+import com.worlyep.weatherse.api.data.WeatherResponse
+import com.worlyep.weatherse.api.interfaces.BaseCallBack
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

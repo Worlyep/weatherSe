@@ -1,4 +1,4 @@
-package com.worlyep.weatherse.custom
+package com.worlyep.weatherse.view.custom
 
 import android.content.Context
 import android.text.Html

@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.worlyep.weatherse.custom.WeatherInfoLayout
+    <com.worlyep.weatherse.view.custom.WeatherInfoLayout
         android:id="@+id/todayTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         app:layout_constraintStart_toEndOf="@+id/locationTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.worlyep.weatherse.custom.WeatherInfoLayout
+    <com.worlyep.weatherse.view.custom.WeatherInfoLayout
         android:id="@+id/tomorrowTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
