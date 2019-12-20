@@ -1,4 +1,4 @@
-package com.worlyep.weatherse.api.interfaces
+package com.worlyep.weatherse.common.api.interfaces
 
 interface BaseCallBack<T> {
     fun onResultForData(body: T?)

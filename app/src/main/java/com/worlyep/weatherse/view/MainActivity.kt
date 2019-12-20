@@ -7,20 +7,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.worlyep.weatherse.R
-import com.worlyep.weatherse.api.data.LocationResponse
-import com.worlyep.weatherse.api.data.WeatherResponse
-import com.worlyep.weatherse.api.data.DataShowcase
-import com.worlyep.weatherse.api.interfaces.BaseCallBack
-import com.worlyep.weatherse.base.objects.ApiRequest
-import com.worlyep.weatherse.base.objects.Logs
-import com.worlyep.weatherse.base.objects.Utils
+import com.worlyep.weatherse.common.api.data.LocationResponse
+import com.worlyep.weatherse.common.api.data.WeatherResponse
+import com.worlyep.weatherse.common.api.data.DataShowcase
+import com.worlyep.weatherse.common.api.interfaces.BaseCallBack
+import com.worlyep.weatherse.common.objects.ApiRequest
+import com.worlyep.weatherse.common.objects.Logs
+import com.worlyep.weatherse.common.objects.Utils
 import com.worlyep.weatherse.view.apapter.WeatherAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val linearLayoutMgr: LinearLayoutManager by lazy { LinearLayoutManager(this@MainActivity) }
     private val adapter: WeatherAdapter by lazy { WeatherAdapter(this@MainActivity) }
-    private var weatherShowcaseList: ArrayList<DataShowcase>? = ArrayList()
+    private var showcaseList: ArrayList<DataShowcase>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         setData()
 
         refreshLayout.setOnRefreshListener {
-            if (weatherShowcaseList?.size!! > 0)
-                weatherShowcaseList = ArrayList()
+            if (showcaseList?.size!! > 0)
+                showcaseList = ArrayList()
             setData()
         }
     }
@@ -43,14 +43,14 @@ class MainActivity : AppCompatActivity() {
         if (!refreshLayout.isRefreshing) {
             progress.visibility = View.VISIBLE
         }
-        weatherShowcaseList?.let { adapter.setList(it) }
+        showcaseList?.let { adapter.setList(it) }
         searchWeather()
     }
 
     private fun searchWeather() {
         ApiRequest.searchWeather(object : BaseCallBack<ArrayList<WeatherResponse>> {
             override fun onResultForData(body: ArrayList<WeatherResponse>?) {
-                if (body != null && body.size > 0) {
+                if (!body.isNullOrEmpty()) {
                     for (i in 0 until body.size) {
                         locationWeather(body[i].title, body[i].woeid)
                     }
@@ -69,13 +69,13 @@ class MainActivity : AppCompatActivity() {
                 override fun onResultForData(body: LocationResponse?) {
                     body?.run {
                         if (!(this.consolidated_weather!!.isNullOrEmpty())) {
-                            weatherShowcaseList?.add(
+                            showcaseList?.add(
                                 DataShowcase(
                                     location,
                                     (this.consolidated_weather)?.subList(0, 2)
                                 )
                             )
-                            Logs.catchLogs(weatherShowcaseList.toString())
+                            Logs.catchLogs(showcaseList.toString())
                         }
                     }
                 }

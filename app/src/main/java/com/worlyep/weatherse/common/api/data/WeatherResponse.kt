@@ -1,4 +1,4 @@
-package com.worlyep.weatherse.api.data
+package com.worlyep.weatherse.common.api.data
 
 data class WeatherResponse(
     var title: String? = null,

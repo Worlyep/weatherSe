@@ -1,8 +1,8 @@
-package com.worlyep.weatherse.base
+package com.worlyep.weatherse.common
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
-import com.worlyep.weatherse.api.interfaces.InterfaceRestful
+import com.worlyep.weatherse.common.api.interfaces.InterfaceRestful
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

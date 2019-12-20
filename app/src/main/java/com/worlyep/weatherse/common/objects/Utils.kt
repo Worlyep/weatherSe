@@ -1,4 +1,4 @@
-package com.worlyep.weatherse.base.objects
+package com.worlyep.weatherse.common.objects
 
 import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE

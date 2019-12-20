@@ -1,4 +1,4 @@
-package com.worlyep.weatherse.base.objects
+package com.worlyep.weatherse.common.objects
 
 import android.util.Log
 import com.worlyep.weatherse.BuildConfig
