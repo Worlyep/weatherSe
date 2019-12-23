@@ -1,6 +1,5 @@
 package com.worlyep.weatherse.view.apapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.worlyep.weatherse.common.api.data.DataShowcase
 import com.worlyep.weatherse.view.custom.WeatherInfoLayout
 import com.worlyep.weatherse.view.holder.WeatherViewHolder
 
-class WeatherAdapter(private val context: Context?) :
+class WeatherAdapter :
     RecyclerView.Adapter<WeatherViewHolder>() {
     private var isHeader: Boolean = false
     private var weatherList: ArrayList<DataShowcase> = ArrayList()
@@ -22,11 +21,14 @@ class WeatherAdapter(private val context: Context?) :
         return if (viewType == 0) {
             isHeader = true
             view =
-                LayoutInflater.from(context).inflate(R.layout.item_header_weather, viewGroup, false)
+                LayoutInflater.from(viewGroup.context)
+                    .inflate(R.layout.item_header_weather, viewGroup, false)
             WeatherViewHolder(view, true)
         } else {
             isHeader = false
-            view = LayoutInflater.from(context).inflate(R.layout.item_weather, viewGroup, false)
+            view =
+                LayoutInflater.from(viewGroup.context)
+                    .inflate(R.layout.item_weather, viewGroup, false)
             WeatherViewHolder(view, false)
         }
     }
