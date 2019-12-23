@@ -9,8 +9,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 object ApiRequest {
-    fun searchWeather(callBack: BaseCallBack<ArrayList<WeatherResponse>>) {
-        val searchWeather = Application.setRetrofitServer().locationSearch("se")
+    fun searchWeather(query: String = "", callBack: BaseCallBack<ArrayList<WeatherResponse>>) {
+        val searchWeather = Application.setRetrofitServer().locationSearch(query)
         searchWeather.enqueue(object : Callback<ArrayList<WeatherResponse>> {
             override fun onResponse(
                 call: Call<ArrayList<WeatherResponse>>,
