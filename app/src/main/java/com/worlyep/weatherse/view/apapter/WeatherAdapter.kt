@@ -63,7 +63,7 @@ class WeatherAdapter :
         weather?.run {
             weatherLayout.setWeatherIcon(getIconUrl(this.weather_state_abbr))
             weatherLayout.setWeatherName(this.weather_state_name)
-            weatherLayout.setWeatherTemper((this.the_temp)?.toInt(), (this.humidity)?.toInt())
+            weatherLayout.setWeatherTemper(this.the_temp, this.humidity)
         }
     }
 
