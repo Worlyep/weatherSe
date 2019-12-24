@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WeatherInfoLayout">
+        <attr name="weatherIcon" format="reference|string" />
+        <attr name="weatherName" format="reference|string" />
+        <attr name="weatherTemper" format="float" />
+        <attr name="weatherHumid" format="float" />
+    </declare-styleable>
+</resources>
