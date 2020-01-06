@@ -1,7 +1,14 @@
 package com.worlyep.weatherse.common.base
 
+import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseViewHolder(binding: ViewDataBinding) :
-    RecyclerView.ViewHolder(binding.root)
+/**
+ * 2020-01-03
+ * @author worlyep
+ **/
+abstract class BaseViewHolder<VB : ViewDataBinding>(view: View) : RecyclerView.ViewHolder(view) {
+    val binding: VB = DataBindingUtil.bind(view)!!
+}

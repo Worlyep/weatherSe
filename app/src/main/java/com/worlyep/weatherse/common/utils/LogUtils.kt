@@ -1,9 +1,9 @@
-package com.worlyep.weatherse.common.objects
+package com.worlyep.weatherse.common.utils
 
 import android.util.Log
 import com.worlyep.weatherse.BuildConfig
 
-object Logs {
+object LogUtils {
     private const val TAG = "WORLYEP"
 
     fun catchLogs(msg: String) {
