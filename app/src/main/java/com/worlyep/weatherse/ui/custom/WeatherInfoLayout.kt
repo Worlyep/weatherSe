@@ -35,12 +35,4 @@ class WeatherInfoLayout : LinearLayout {
         binding.data = data
         addView(binding.root)
     }
-/*
-
-    internal fun setWeatherName(name: String?) {
-        binding.weatherName.text = name
-    }
-
-
-*/
 }
