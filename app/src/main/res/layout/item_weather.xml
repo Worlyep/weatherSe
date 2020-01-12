@@ -28,11 +28,12 @@
             android:text="@{data.location}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/weatherLayout"
+            app:layout_constraintEnd_toStartOf="@+id/weatherLayout"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <LinearLayout
             android:id="@+id/weatherLayout"
@@ -43,7 +44,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="6"
             app:layout_constraintStart_toEndOf="@+id/locationTitle"
-            app:layout_constraintTop_toTopOf="parent"
-            app:weatherData="@{data}" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/todayWeatherLayout"
+                layout="@layout/layout_weather_info"
+                app:data="@{data.weatherData[0]}" />
+
+            <include
+                android:id="@+id/tomorrowWeatherLayout"
+                layout="@layout/layout_weather_info"
+                app:data="@{data.weatherData[0]}" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
