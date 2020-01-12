@@ -1,6 +1,6 @@
 package com.worlyep.weatherse.data
 
-import com.worlyep.weatherse.restful.data.ConsolidateResponse
+import com.worlyep.weatherse.data.restful.ConsolidateResponse
 
 /**
  * 2020-01-03

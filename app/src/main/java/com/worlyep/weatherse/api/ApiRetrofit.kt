@@ -1,4 +1,4 @@
-package com.worlyep.weatherse.restful.api
+package com.worlyep.weatherse.api
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

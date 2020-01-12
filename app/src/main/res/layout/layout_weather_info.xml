@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.worlyep.weatherse.restful.data.ConsolidateResponse" />
+            type="com.worlyep.weatherse.data.restful.ConsolidateResponse" />
     </data>
 
     <LinearLayout

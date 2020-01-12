@@ -1,7 +1,7 @@
-package com.worlyep.weatherse.restful.api
+package com.worlyep.weatherse.api
 
-import com.worlyep.weatherse.restful.data.LocationResponse
-import com.worlyep.weatherse.restful.data.WeatherResponse
+import com.worlyep.weatherse.data.restful.LocationResponse
+import com.worlyep.weatherse.data.restful.WeatherResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

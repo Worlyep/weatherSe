@@ -1,8 +1,8 @@
-package com.worlyep.weatherse.restful.data
+package com.worlyep.weatherse.data.restful
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.worlyep.weatherse.restful.api.ApiRetrofit
+import com.worlyep.weatherse.api.ApiRetrofit
 
 /**
  * 2020-01-03

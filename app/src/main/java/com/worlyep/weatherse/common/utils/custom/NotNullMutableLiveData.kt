@@ -1,4 +1,4 @@
-package com.worlyep.weatherse.common.utils
+package com.worlyep.weatherse.common.utils.custom
 
 import androidx.lifecycle.MutableLiveData
 

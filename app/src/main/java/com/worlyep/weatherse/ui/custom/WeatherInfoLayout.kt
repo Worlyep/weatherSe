@@ -1,20 +1,13 @@
 package com.worlyep.weatherse.ui.custom
 
 import android.content.Context
-import android.text.Html
-import android.text.Spanned
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
-import com.bumptech.glide.Glide
 import com.worlyep.weatherse.R
+import com.worlyep.weatherse.data.restful.ConsolidateResponse
 import com.worlyep.weatherse.databinding.LayoutWeatherInfoBinding
-import com.worlyep.weatherse.restful.data.ConsolidateResponse
 
 class WeatherInfoLayout : LinearLayout {
     private lateinit var binding: LayoutWeatherInfoBinding

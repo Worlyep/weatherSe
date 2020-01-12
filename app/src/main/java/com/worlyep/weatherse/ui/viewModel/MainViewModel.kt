@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.worlyep.weatherse.common.base.BaseViewModel
 import com.worlyep.weatherse.common.utils.LogUtils
-import com.worlyep.weatherse.common.utils.NotNullMutableLiveData
+import com.worlyep.weatherse.common.utils.custom.NotNullMutableLiveData
 import com.worlyep.weatherse.data.DataShowcase
-import com.worlyep.weatherse.restful.api.ApiRetrofit
+import com.worlyep.weatherse.api.ApiRetrofit
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -18,11 +18,13 @@ import io.reactivex.schedulers.Schedulers
  * ## RxJava / RxAndroid 제공하는 스케쥴러 섹션 참조
  **/
 class MainViewModel : BaseViewModel() {
-    private val _visibility: NotNullMutableLiveData<Boolean> = NotNullMutableLiveData(false)
+    private val _visibility: NotNullMutableLiveData<Boolean> =
+        NotNullMutableLiveData(false)
     val visibility: LiveData<Boolean>
         get() = _visibility
 
-    private val _refreshing: NotNullMutableLiveData<Boolean> = NotNullMutableLiveData(false)
+    private val _refreshing: NotNullMutableLiveData<Boolean> =
+        NotNullMutableLiveData(false)
     val refreshing: LiveData<Boolean>
         get() = _refreshing
 
