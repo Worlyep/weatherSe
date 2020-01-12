@@ -35,15 +35,25 @@ class MainViewModel : BaseViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        LogUtils.catchLogs("cleared", showcaseList.value.toString())
-        if (_showcaseList.value?.isNotEmpty()!!) {
-            _showcaseList.value?.clear()
-        }
+        clearData()
     }
 
     fun setData() {
-        LogUtils.catchLogs("setData_prev", showcaseList.value.toString())
+        clearData()
         addDisposable(searchWeather("se"))
+    }
+
+    fun refreshData() {
+        _refreshing.value = true
+        _visibility.value = false
+        setData()
+    }
+
+    private fun clearData() {
+        if (list.isNotEmpty()) {
+            list.clear()
+        }
+        _showcaseList.value = list
     }
 
     private fun searchWeather(query: String = ""): Disposable =
@@ -51,7 +61,7 @@ class MainViewModel : BaseViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
-                //    _refreshing.value = true
+                _refreshing.value = true
                 _visibility.value = false
             }
             .subscribe({
@@ -62,7 +72,7 @@ class MainViewModel : BaseViewModel() {
                 }
             }, { t ->
                 LogUtils.catchLogs(t.toString())
-                //    _refreshing.value = false
+                _refreshing.value = false
                 _visibility.value = false
             })
 
@@ -71,6 +81,7 @@ class MainViewModel : BaseViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doAfterSuccess {
+                _refreshing.value = false
                 _visibility.value = true
             }
             .subscribe({
@@ -80,7 +91,7 @@ class MainViewModel : BaseViewModel() {
                 }
             }, { t ->
                 LogUtils.catchLogs(t.toString())
-                //    _refreshing.value = false
+                _refreshing.value = false
                 _visibility.value = false
             })
 }
