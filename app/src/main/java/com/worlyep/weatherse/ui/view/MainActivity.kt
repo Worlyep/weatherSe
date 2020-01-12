@@ -3,11 +3,9 @@ package com.worlyep.weatherse.ui.view
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModelProviders
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.worlyep.weatherse.R
 import com.worlyep.weatherse.common.base.BaseActivity
 import com.worlyep.weatherse.common.utils.LogUtils
-import com.worlyep.weatherse.common.utils.refresh
 import com.worlyep.weatherse.databinding.ActivityMainBinding
 import com.worlyep.weatherse.ui.viewModel.MainViewModel
 
@@ -15,7 +13,7 @@ import com.worlyep.weatherse.ui.viewModel.MainViewModel
  * 2020-01-03
  * @author worlyep
  **/
-class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnRefreshListener {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
     @LayoutRes
     override fun getLayoutId(): Int = R.layout.activity_main
 
@@ -28,9 +26,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnR
 
         binding.viewModel?.setData()
         LogUtils.catchLogs(binding.viewModel?.showcaseList?.value.toString())
-    }
-
-    override fun onRefresh() {
-        binding.refreshLayout.refresh(false)
     }
 }
