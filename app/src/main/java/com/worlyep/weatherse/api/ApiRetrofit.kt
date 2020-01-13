@@ -25,6 +25,4 @@ object ApiRetrofit {
         this.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         this.addConverterFactory(GsonConverterFactory.create()).build()
     }.create(ApiInterface::class.java)
-
-    fun getWeatherImageUrl(): String = baseUrl + imgUrl
 }
