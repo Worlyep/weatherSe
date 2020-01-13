@@ -2,12 +2,10 @@ package com.worlyep.weatherse.ui.view
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
-import androidx.lifecycle.ViewModelProviders
 import com.worlyep.weatherse.R
 import com.worlyep.weatherse.common.base.BaseActivity
-import com.worlyep.weatherse.common.utils.LogUtils
 import com.worlyep.weatherse.databinding.ActivityMainBinding
-import com.worlyep.weatherse.ui.viewModel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 /**
  * 2020-01-03
@@ -19,12 +17,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val vm = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
-        binding.viewModel = vm
+        binding.viewModel = getViewModel()
         binding.lifecycleOwner = this
 
         binding.viewModel?.setData()
-        LogUtils.catchLogs(binding.viewModel?.showcaseList?.value.toString())
     }
 }

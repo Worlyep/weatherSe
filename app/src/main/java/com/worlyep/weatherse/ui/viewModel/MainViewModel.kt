@@ -2,6 +2,7 @@ package com.worlyep.weatherse.ui.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.worlyep.weatherse.api.ApiRepository
 import com.worlyep.weatherse.common.base.BaseViewModel
 import com.worlyep.weatherse.common.utils.LogUtils
 import com.worlyep.weatherse.common.utils.custom.NotNullMutableLiveData
@@ -17,7 +18,7 @@ import io.reactivex.schedulers.Schedulers
  * @note.RxJava 노트
  * ## RxJava / RxAndroid 제공하는 스케쥴러 섹션 참조
  **/
-class MainViewModel : BaseViewModel() {
+class MainViewModel(private val model: ApiRepository) : BaseViewModel() {
     private val _visibility: NotNullMutableLiveData<Boolean> =
         NotNullMutableLiveData(false)
     val visibility: LiveData<Boolean>
@@ -59,7 +60,7 @@ class MainViewModel : BaseViewModel() {
     }
 
     private fun searchWeather(query: String = ""): Disposable =
-        ApiRetrofit.setRetrofit().searchLocation(query)
+        model.searchLocation(query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
@@ -79,7 +80,7 @@ class MainViewModel : BaseViewModel() {
             })
 
     private fun locationWeather(name: String, woeId: String): Disposable =
-        ApiRetrofit.setRetrofit().getLocationWeather(woeId)
+        model.getLocationWeather(woeId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doAfterSuccess {
