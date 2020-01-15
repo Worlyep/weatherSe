@@ -2,7 +2,7 @@ package com.worlyep.weatherse.data.restful
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.worlyep.weatherse.api.ApiRetrofit
+import com.worlyep.weatherse.di.API_IMAGE_URL
 
 /**
  * 2020-01-03
@@ -26,5 +26,5 @@ data class ConsolidateResponse(
     val humid: Double
 ) {
     val weatherIcon: String
-        get() = ApiRetrofit.imgUrl + "$weatherAbbr.png"
+        get() = "$API_IMAGE_URL$weatherAbbr.png"
 }

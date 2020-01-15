@@ -7,7 +7,6 @@ import com.worlyep.weatherse.common.base.BaseViewModel
 import com.worlyep.weatherse.common.utils.LogUtils
 import com.worlyep.weatherse.common.utils.custom.NotNullMutableLiveData
 import com.worlyep.weatherse.data.DataShowcase
-import com.worlyep.weatherse.api.ApiRetrofit
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
