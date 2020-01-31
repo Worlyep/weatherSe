@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.worlyep.weatherse.ui.viewModel.MainViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -77,6 +84,7 @@
                 android:hint="Keyword"
                 android:imeOptions="actionNext"
                 android:inputType="text"
+                android:text="se"
                 android:textColor="@color/black"
                 android:textColorHint="@color/colorPrimaryDark" />
 
@@ -86,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
+                android:onClick="onClickSearch"
                 android:text="search" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,5 +111,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bottom_guideline" />
+
+        <ProgressBar
+            android:id="@+id/main_progress"
+            visibility="@{viewModel.loadComplete}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -52,7 +52,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mainTitle"
             app:onRefreshListener="@{() -> viewModel.refreshData()}"
-            app:refresh="@{viewModel.refreshing}">
+            refresh="@{viewModel.refreshing}">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/weatherList"

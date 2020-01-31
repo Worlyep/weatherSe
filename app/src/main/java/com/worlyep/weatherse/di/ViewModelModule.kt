@@ -7,7 +7,10 @@ import org.koin.dsl.module
 
 var viewModelModule = module {
     viewModel {
-        MainViewModel(get())
         WeatherViewModel(get())
+    }
+
+    viewModel {
+        MainViewModel(get())
     }
 }

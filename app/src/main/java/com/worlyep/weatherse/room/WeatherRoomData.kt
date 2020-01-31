@@ -24,7 +24,7 @@ abstract class WeatherRoomData : RoomDatabase() {
                         context.applicationContext,
                         WeatherRoomData::class.java,
                         "cities_data.db"
-                    ).build()
+                    ).allowMainThreadQueries().build()
                 }
             }
             return INSTANCE
