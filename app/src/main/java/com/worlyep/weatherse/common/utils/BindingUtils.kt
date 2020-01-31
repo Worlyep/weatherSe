@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
@@ -14,7 +15,7 @@ import com.worlyep.weatherse.R
 import com.worlyep.weatherse.data.DataShowcase
 import com.worlyep.weatherse.ui.adapter.WeatherAdapter
 import com.worlyep.weatherse.ui.custom.WeatherInfoLayout
-import com.worlyep.weatherse.ui.viewModel.MainViewModel
+import com.worlyep.weatherse.ui.viewModel.WeatherViewModel
 
 @BindingAdapter("refresh")
 fun SwipeRefreshLayout.refresh(visible: Boolean) {
@@ -27,14 +28,14 @@ fun setVisibility(view: View, visible: Boolean) {
 }
 
 @BindingAdapter(value = ["viewModel", "data"])
-fun RecyclerView.setAdapter(vm: MainViewModel, items: ArrayList<DataShowcase>) {
+fun RecyclerView.setAdapter(vm: WeatherViewModel, items: LiveData<ArrayList<DataShowcase>>) {
     this.adapter?.let {
         if (it is WeatherAdapter) {
-            it.showCaseList = items
+            it.showCaseList = items.value!!
             it.notifyDataSetChanged()
         }
     } ?: let {
-        WeatherAdapter(items, vm).apply {
+        WeatherAdapter(items.value!!, vm).apply {
             it.adapter = this
         }
     }

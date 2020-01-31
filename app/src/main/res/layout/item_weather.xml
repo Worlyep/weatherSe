@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.worlyep.weatherse.ui.viewModel.MainViewModel" />
+            type="com.worlyep.weatherse.ui.viewModel.WeatherViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

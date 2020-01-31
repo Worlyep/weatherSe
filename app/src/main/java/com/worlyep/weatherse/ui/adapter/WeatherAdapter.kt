@@ -11,13 +11,13 @@ import com.worlyep.weatherse.databinding.ItemHeaderWeatherBinding
 import com.worlyep.weatherse.databinding.ItemWeatherBinding
 import com.worlyep.weatherse.ui.holder.WeatherHeaderViewHolder
 import com.worlyep.weatherse.ui.holder.WeatherViewHolder
-import com.worlyep.weatherse.ui.viewModel.MainViewModel
+import com.worlyep.weatherse.ui.viewModel.WeatherViewModel
 
 /**
  * 2020-01-03
  * @author worlyep
  **/
-class WeatherAdapter(var showCaseList: ArrayList<DataShowcase>, val viewModel: MainViewModel) :
+class WeatherAdapter(var showCaseList: ArrayList<DataShowcase>, val viewModel: WeatherViewModel) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
