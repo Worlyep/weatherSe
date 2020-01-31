@@ -15,8 +15,8 @@ interface WeatherRoomDao {
     @Delete
     fun deleteData(item: WeatherResponse)
 
-    @Query("SELECT woeid FROM cities WHERE locaName=:name")
-    fun getWoeId(name: String?): Int
+    @Query("SELECT woeid FROM cities WHERE locaName LIKE '%'+:name+'%'")
+    fun getAllWoeId(name: String?): MutableList<Int>
 
     @Query("SELECT COUNT(*) FROM cities")
     fun loadAllDataCount(): Int
